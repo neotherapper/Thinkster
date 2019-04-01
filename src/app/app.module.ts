@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import {
   SharedModule,
   FooterComponent,
-  HeaderComponent
+  HeaderComponent,
+  ApiService,
+  UserService
 } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
@@ -24,7 +26,10 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     HomeModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
