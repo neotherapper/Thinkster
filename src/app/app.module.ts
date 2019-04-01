@@ -10,7 +10,7 @@ import {
   HeaderComponent
 } from './shared';
 import { HomeModule } from './home/home.module';
-import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     SharedModule,
     HomeModule
