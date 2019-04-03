@@ -9,7 +9,8 @@ import {
   FooterComponent,
   HeaderComponent,
   ApiService,
-  UserService
+  UserService,
+  JwtService
 } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
@@ -28,6 +29,7 @@ import { AuthModule } from './auth/auth.module';
   ],
   providers: [
     ApiService,
+    JwtService,
     UserService
   ],
   bootstrap: [AppComponent]
