@@ -54,7 +54,7 @@ export class ApiService {
     )
       .pipe(
         catchError(this.handleError),
-        map((res: Response) => res.json())
+        map((res: Response) => res)
       );
   }
 
