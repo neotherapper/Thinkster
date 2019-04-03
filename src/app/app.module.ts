@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,8 @@ import {
   HeaderComponent,
   ApiService,
   UserService,
-  JwtService
+  JwtService,
+  AuthGuard
 } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
@@ -29,6 +30,7 @@ import { AuthModule } from './auth/auth.module';
   ],
   providers: [
     ApiService,
+    AuthGuard,
     JwtService,
     UserService
   ],
