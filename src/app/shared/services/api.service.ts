@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { JwtService } from './jwt.service';
 
 @Injectable()
 export class ApiService {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private jwtService: JwtService
   ) {}
 
   private setHeaders(): HttpHeaders {
     const headersConfig = {
       'Content-Type': 'application/json',
-      Accept: 'application/json'
+      Accept: 'application/json',
+      Authorization: ''
     };
+
+    const token = this.jwtService.getToken();
+
+    if (token) {
+      headersConfig.Authorization = `Token ${token}`;
+    }
 
     return new HttpHeaders(headersConfig);
   }
@@ -32,7 +41,20 @@ export class ApiService {
     )
       .pipe(
         catchError(this.handleError),
-        map((res: Response) => res.json)
+        map((res: Response) => {
+          return res;
+        })
+      );
+  }
+
+  get(path: string, searchParams: HttpParams = new HttpParams()): Observable<any> {
+    return this.http.get(
+      `${environment.api_url}${path}`,
+      { headers: this.setHeaders(), params: searchParams }
+    )
+      .pipe(
+        catchError(this.handleError),
+        map((res: Response) => res.json())
       );
   }
 
