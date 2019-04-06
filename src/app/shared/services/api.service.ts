@@ -58,7 +58,7 @@ export class ApiService {
       );
   }
 
-  put(path: string, body: object={}): Observable<any> {
+  put(path: string, body: object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
