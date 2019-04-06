@@ -15,18 +15,20 @@ import {
 } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
+import { SettingsModule } from './settings/settings.module';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AuthModule,
     AppRoutingModule,
-    SharedModule,
-    HomeModule
+    HomeModule,
+    SettingsModule,
+    SharedModule
   ],
   providers: [
     ApiService,
