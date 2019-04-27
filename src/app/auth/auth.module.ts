@@ -25,6 +25,6 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
   ],
   exports: [],
   declarations: [AuthComponent],
-  providers: [],
+  providers: [NoAuthGuard],
 })
 export class AuthModule { }
